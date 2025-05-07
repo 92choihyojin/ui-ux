@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrap" style="width: 80%; margin: 0 auto;">
+    <form method='get' action='#'>
+      <fieldset>
+        <legend>취미 선택하기 1</legend>
+        <label for="hobby1">게임 </label><input type="radio" name="hobby1" id="hobby1" value="게임">
+        <label for="hobby2">영화 </label><input type="radio" name="hobby2" id="hobby2" value="영화">
+        <label for="hobby3">재테크 </label><input type="radio" name="hobby3" id="hobby3" value="재테크">
+      </fieldset>
+      <fieldset>
+        <legend>취미 선택하기 2</legend>
+        <label for="hobbyck1">수영</label><input type="checkbox" name="hobbyck" id="hobbyck1" value="게임">
+        <label for="hobbyck2">자전거</label><input type="checkbox" name="hobbyck" id="hobbyck2" value="영화">
+        <label for="hobbyck3">등산</label><input type="checkbox" name="hobbyck" id="hobbyck3" value="재테크">
+      </fieldset>
+      <fieldset>
+        <legend>막대바 진행</legend>
+        <label for="range">현재 진행사항</label>
+        <input type="range" name="range" id="range" min="0" max="100" step="1" value="20">
+      </fieldset>
+      <fieldset>
+        <legend>숫자 입력하기</legend>
+        <label for="range">나이:</label>
+        <input type="number" name="age" id="age" min="19" max="100" step="1" value="20">
+      </fieldset>
+      <input type="image" src="./../ui_src/ui_src/05/images/login.png">
+      <input type="reset" value="취소">
+      <input type="button" value="전송하기" onclick="window.alert('전송완료')">
+      <input type="button" value="새창 열기" onclick="window.open('./01from.html')">
+    </form>
+  </div>
+</body>
+</html>
