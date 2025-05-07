@@ -6,25 +6,33 @@
   <title>Document</title>
 </head>
 <body>
-  <form method='method' action='action'>
-  <fieldset>
-    <legend>배송 정보</legend>
-   <ul>
-     <li>
-        <lavel for="name">이름</lavel> <input type="text" name="name" id="name">
-      </li>
-      <li>
-        <lavel for="adress">배송 주소</lavel> <input type="text" name="name" id="adress"><br>
-      </li>
-      <li>
-        <lavel for="e-mail">이메일</lavel> <input type="text" name="name" id="e-mail"><br>
-      </li>
-      <li>
-        <lavel for="pheon">연락처</lavel> <input type="text" name="name" id="pheon"><br>
-      </li>
-    
-   </ul>
-  </fieldset>
-  </form>
+  <div class="wrap" style="width: 80%; margin: 0 auto;">
+    <form method='post' action='input.jsp'>
+    <fieldset>
+      <legend>배송 정보</legend>
+     <ul>
+       <li>
+          <lavel for="name">이름</lavel>
+           <input type="text" name="name" id="name"
+                  size="15" maxlength="4" minlength="2" placeholder="최자바">
+        </li>
+        <li>
+          <lavel for="addr">배송 주소</lavel>
+            <input type="text" name="addr" id="addr" size="30"><br>
+        </li>
+        <li>
+          <lavel for="e-mail">이메일</lavel>
+          <input type="email" name="e-mail" id="e-mail" required><br>
+        </li>
+        <li>
+          <lavel for="phone">연락처</lavel>
+          <input type="number" name="phone" id="phone"
+          placeholder="010-0000-0000" minlength="13"><br>
+         </li>
+     </ul>
+        <input type="submit" value="배송하기">
+    </fieldset>
+    </form>
+  </div>
 </body>
 </html>
