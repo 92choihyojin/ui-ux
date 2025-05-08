@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    ul { /*ul에 리스트스타일 점을 지우는거*/
+      list-style: none;
+      display: flex;
+      flex-direction: row; /*row / column 세로 or 가로*/
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a { /*텍스트데코레이션 밑줄 지우기 , 박스 만들기, 인라인 블록을 주고 패딩을 줘서 박스값 주기*/
+      text-decoration: none;
+      border: 2px solid black;
+      display: inline-block;
+      padding: 10px;
+    }
+
+    /*누를때, 방문하고 나왔을때, */
+    a:link, a:visited  {
+      color: black;
+    }
+    a:hover { /*마우스를 올렸을때 색상변환환*/
+      color: red;
+    }
+
+    li { /*li 마진값을 오른쪽에 줘서 띄우는거*/
+      margin-right: 20px;
+    }
+
+    i { /*폰트의 아이콘 색상 주기*/
+      color: rgb(0, 0, 0);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <ul>
+      <li><a href=""><i class="fa-solid fa-house"></i> 메뉴1</a> </li>
+      <li><a href=""><i class="fa-solid fa-tv"></i> 메뉴2</a> </li>
+      <li><a href=""><i class="fa-solid fa-battery-half"></i> 메뉴3</a></li>
+    </ul>
+  </div>
+</body>
+</html>
