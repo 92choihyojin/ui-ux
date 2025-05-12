@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap{
+      height: 100vh;
+      background-color: violet;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    .origin {
+      border: 1px solid black;
+    }
+    .origin >div{
+     transition:  all 0.7s;
+    }
+    .rotatex:hover {
+      border: 1px solid black;
+      transform: rotateX(45deg);
+    }
+    .rotatey:hover {
+      border: 1px solid black;
+      transform:rotateY(45deg);
+    }
+
+
+    .rotatexy:hover {
+      border: 1px solid black;
+      transform:rotateZ(45deg);
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+  <div class="origin perspect">
+    <div class="rotatex">
+      <img src="./../images/sunset.jpg" alt="노을하늘">
+    </div>
+  </div>
+  <div class="origin perspect">
+    <div class="rotatey">
+      <img src="./../images/sunset.jpg" alt="노을하늘">
+    </div>
+  </div>
+  <div class="origin perspect">
+    <div class="rotatexy">
+      <img src="./../images/sunset.jpg" alt="노을하늘">
+    </div>
+  </div>
+  <div class="origin perspect">
+    <div class="rotatexy">
+      <img src="./../images/sunset.jpg" alt="노을하늘">
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>
