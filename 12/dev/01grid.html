@@ -16,9 +16,11 @@
     }
 
     .container{
+      width: 900px;
       display: grid;
-      grid-template-columns: 100px 200px 300px;
-      grid-template-rows: 50px 100px;
+      grid-template-columns: repeat(3, 2fr);
+      grid-template-rows: 100px , 100px; /* 크기, 내용에 따라서 mixmax(100px,auto) */
+      grid-auto-rows: 100px;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -26,7 +28,7 @@
     }
     .item {
       border: 1px solid black;
-      position: relative;
+      text-align: center;
     }
     .item:nth-child(2n) {/* 2n 짝수 , 2n+1 홀수 */
       background-color: tan;
