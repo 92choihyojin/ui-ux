@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .container{
+      background-color: bisque;
+      border: 1px solid black;
+      width: 900px;
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      animation-name: moveBox;
+      animation-duration: 3s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation: moveBox 3s linear infinite alternate, moveBackground Color 3s ; 
+    }
+
+    @keyframes moveBox {
+      from{
+        transform: translateX(0);
+
+      }
+      to {
+        transform: translateX(900px);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+<div class="container">
+  <div class="box"></div>
+</div>
+</body>
+
+</html>
