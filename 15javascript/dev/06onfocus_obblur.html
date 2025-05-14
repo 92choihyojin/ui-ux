@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    label{
+      display: inline-block;
+      width: 200px;
+    }
+    #name, #id, #password {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 서버에 form 태그를 이용해 데이터를 post 방식으로 insert.jsp 전송하는 프로그램 -->
+  <form action="" method="post">
+  <fieldset>
+    <legend>개인정보입력</legend>
+    <label for="name">이름 : </label><input type="type" name="name" id="name" placeholder="이름">
+      <span id="nameMessage">성명 입력</span><br>
+    <label for="id">아이디 : </label><input type="type" name="id" id="id"placeholder="아이디"><br>
+    <label for="password">패스워드 : </label><input type="password" name="password" id="password"placeholder="패스워드"><br>
+  </fieldset>
+  <input type="submit" value="전송">
+  <input type="reset" value="취소">
+</form>
+
+<script>
+  // 1. 객체 찾는다
+  let name = document.querySelector("#name");
+  let nameMessage = document.querySelector("nameMessage");
+  // 2. 이벤트설정 = 함수인터페이스 onfoucs, onblur
+  // onfocus : 1~4 글자 성명 입력 한글만 인정함.
+  name.onfous = event => nameMessage.innerHTML = '1~4 글자 성명 입력 한글만 인정함';
+  name.onblur = function(event){
+    if(name.value.length > 4){
+      nameMessage.innerHTML = '입력값이 4글자 초과';
+      name.value = '';
+    }else if (name.value.length < 1){
+      nameMessage.innerHTML = '입력값이 1글자 미만만';
+      name.value = '';
+    }else {
+      nameMessage.innerHTML = '성공';
+    }
+  };
+</script>
+</body>
+
+</html>
