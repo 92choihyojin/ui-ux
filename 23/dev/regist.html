@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+		integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		#content {
+			text-align: center;
+			height: 300px;
+		}
+		#slide_show {
+			width: 100%;
+			height: 300px;
+			position: relative;
+			border-radius: 20px;
+			left: -50%;
+		}
+
+		.img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			border-radius: 20px;
+		}
+
+
+		/* 네이게이션 처리 */
+		#navLeft {
+			position: relative;
+			bottom: 171px;
+			left: -35%;
+			transform: translate(-50%, 50%);
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: rgba(128, 128, 128);
+			z-index: 1;
+		}
+
+		#navRight {
+			position: relative;
+			bottom: 171px;
+			right: -35%;
+			transform: translate(50%, 50%);
+			font-size: 2.5rem;
+			font-weight: 700;
+			color: rgba(128, 128, 128);
+			z-index: 1;
+		}
+
+		#navLeft:hover,
+		#navRight:hover {
+			color: rgb(240, 248, 255);
+			cursor: pointer;
+		}
+
+		/* indicator 처리   */
+		#indicator {
+			position: relative;
+			bottom: 75px;
+			z-index: 1;
+		}
+
+		#indicator i {
+			font-size: 1.5rem;
+			font-weight: 700;
+			color: wheat;
+		}
+
+		#indicator i:hover {
+			color: rgb(255, 255, 255);
+		}
+
+		/* indicator 활성화 배경색 */
+		.active {
+			color: rgb(249, 150, 28);
+		}
+	</style>
+	<style>
+		* {
+			/*전체 적용*/
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#wrap {
+			width: 900px;
+			margin: 0 25%;
+		}
+
+		a {
+			display: inline-block;
+			text-decoration: none;
+			color: black;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+
+		ul.menu {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			background-color: rgb(206, 99, 99);
+			margin-bottom: 10px;
+			color: white;
+		}
+
+		ul.menu>li>a {
+			display: inline-block;
+			padding: 10px;
+			width: 100px;
+			text-align: center;
+			color: white;
+		}
+
+		ul.menu>li>a:hover {
+			background-color: rgb(199, 116, 116);
+		}
+
+		/*서브메뉴*/
+		ul.menu>li.dropdown:hover ul.dropdown-content {
+
+			display: block;
+			z-index: 999;
+		}
+
+		ul.dropdown-content {
+			position: absolute;
+			display: none;
+		}
+
+		ul.dropdown-content {
+			display: none;
+			flex-direction: column;
+			width: 100px;
+			text-align: center;
+			background-color: rgb(230, 85, 69);
+		}
+
+		ul.dropdown-content a:hover {
+			background-color: rgb(225, 105, 105);
+			width: 100%;
+			display: block;
+		}
+
+
+		/* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+		#main-1 {
+			margin-top: 5px;
+			margin: 0px;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+		}
+
+		#main-main {
+			display: inline-table;
+			width: 800px;
+			margin: 5px;
+		}
+
+		#main-main>tr>div {
+			width: 300px;
+			border: 3px solid rgb(185, 87, 87);
+		}
+
+		#main-left,
+		#main-right {
+			display: block;
+			text-align: center;
+			width: 200px;
+			background-color: rgb(227, 227, 96);
+			margin-top: 5px;
+		}
+
+		#footer {
+			background-color: rgb(220, 197, 82);
+			margin-top: 5px;
+			height: 100px;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		#id,
+		#pw,
+		#pwCheck,
+		#name,
+		#gender,
+		#email,
+		#phone_select,
+		#certify_number_check {
+			width: 100%;
+		}
+
+		select#year,
+		select#month,
+		select#day {
+			width: 33.3%;
+		}
+
+		#phone {
+			width: 350px;
+		}
+
+		.certify_number {
+			width: 250px;
+			cursor: pointer;
+		}
+
+		tr {
+			background-color: rgb(225, 225, 225);
+		}
+
+		tr div {
+			background-color: aqua;
+		}
+
+		th,
+		td {
+			height: 30px;
+			display: flex;
+			flex-direction: row;
+			margin: 5px;
+		}
+
+		.certify_number,
+		.join {
+			background-color: rgb(88, 145, 3);
+			color: white;
+			border: none;
+		}
+
+		.join {
+			width: 100%;
+			cursor: pointer;
+		}
+
+		/*  */
+		.menu>#camera {
+			display: block;
+		}
+
+
+
+		/* 로그인 창 */
+		#table2 {
+			width: 0 auto
+		}
+
+		#login {
+			display: table-cell
+		}
+
+		#table2 td input {
+			height: 30px;
+			width: 400px;
+		}
+
+		/*  */
+		#phoneCertify_number {
+			display: flex;
+			flex-direction: column;
+		}
+	</style>
+
+</head>
+
+<body>
+	<div id="wrap">
+		<!-- 상단 메뉴탭 바 -->
+		<ul class="menu">
+			<div id="camera"><i class="fa-solid fa-camera-retro"></i>MIRE PHOTO</div>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">menu</a>
+				<ul class="dropdown-content">
+					<li><a href="">sub</a></li>
+					<li><a href="">sub</a></li>
+					<li><a href="">sub</a></li>
+				</ul>
+
+
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">menu</a>
+				<ul class="dropdown-content">
+					<li><a href="">sub</a></li>
+					<li><a href="">sub</a></li>
+					<li><a href="">sub</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">menu</a>
+				<ul class="dropdown-content">
+					<li><a href="">sub</a></li>
+					<li><a href="">sub</a></li>
+					<li><a href="">sub</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropbtn">menu</a>
+				<ul class="dropdown-content">
+					<li><a href="login.html">Login</a></li>
+					<li><a href="">FaceBook</a></li>
+					<li><a href="">Twitter</a></li>
+				</ul>
+			</li>
+			<i class="fa-brands fa-facebook"></i>
+			<i class="fa-brands fa-twitter"></i>
+		</ul>
+		<!-- 이미지 삽입 -->
+
+		<div id="content">
+			<div id="slide_show">
+				<img class="img" width="100%"src="https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202110/26/fomos/20211026134329275jdco.jpg"alt="라그랑주">
+
+				<img class="img" width="100%"
+					src="https://r.res.easebar.com/pic/20221130/c6c32357-d457-444e-8575-10c33fea4401.png">
+				<img class="img" width="100%"
+					src="https://image.xportsnews.com/contents/images/upload/article/2022/0422/1650592256902239.jpg">
+			</div>
+
+			<i class="fa-solid fa-circle-chevron-left" id="navLeft"></i>
+			<i class="fa-solid fa-circle-chevron-right" id="navRight"></i>
+
+			<div id="indicator">
+				<a href="" class="active"><i class="fa-solid fa-circle-dot"></i></a>
+				<a href=""><i class="fa-solid fa-circle-dot"></i></a>
+				<a href=""><i class="fa-solid fa-circle-dot"></i></a>
+			</div>
+		</div>
+		<!-- ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+		<div id="main-1">
+			<nav id="main-left">NAV</nav>
+			<table id="main-main">
+				<tr>
+					<div>
+						<th style="font-size: x-large; margin-bottom: 30px;">MIRE PICTURE</th>
+
+						<th>
+							아이디
+							<span id="idMessage"></span>
+						</th>
+
+						<td>
+							<input type="text" name="id" id="id">@
+							<select id="domain">
+								<option>naver.com</option>
+								<option>daum.com</option>
+								<option>gmail.com</option>
+								<option>yahoo.com</option>
+							</select>
+						</td>
+
+						<th>
+							비밀번호
+							<span id="pwMessage"></span>
+						</th>
+						<td>
+							<input type="password" name="pw" id="pw"><span></span>
+						</td>
+
+						<th>
+							비밀번호 재확인
+							<span id="pwCheckMessage"></span>
+						</th>
+						<td>
+							<input type="password" name="pwCheck" id="pwCheck">
+
+						</td>
+						<th>
+							이름
+							<span id="nameMessage"></span>
+						</th>
+						<td>
+							<input type="text" name="name" id="name">
+						</td>
+
+						<th>생년월일</th>
+						<td id="birthDay">
+						</td>
+
+						<th>성별</th>
+						<td>
+							<select name="gender" id="gender">
+								<option value="">남성</option>
+								<option value="">여성</option>
+							</select>
+
+						</td>
+
+						<th>본인 확인 이메일(선택)</th>
+						<td>
+							<input type="text" name="email" id="email" placeholder="선택입력"><span></span>
+						</td>
+
+						<th>휴대전화</th>
+						<td>
+							<select id="phone_select">
+								<OPtion>
+									대한민국 +82
+								</OPtion>
+							</select><span></span>
+						</td>
+						<div id="phoneCertify_number">
+
+							<td>
+								<input type="text" name="phone" id="phone">
+								<button class="certify_number">인증번호 받기</button>
+							</td>
+						</div>
+						<td>
+							<input type="text" name="" id="certify_number_check" placeholder="인증번호를 입력하세요.">
+						</td>
+
+						<td>
+							<button class="join">
+								가입하기
+							</button>
+						</td>
+
+					</div>
+				</tr>
+			</table>
+			<aside id="main-right">ASIDE</aside>
+		</div>
+		<footer id="footer"></footer>
+	</div>
+	<script>
+		// 회전목마 스크립트
+		document.addEventListener("DOMContentLoaded", () => {
+			// 1 객체찾기
+			const content = document.querySelector("#content");           //회전목마 전체레이아웃
+			const imgList = document.querySelectorAll("#slide_show img"); //회전목마 이미지배열리스트노드
+			const navLeft = document.querySelector("#navLeft");           //회전목마 왼쪽 네비
+			const navRight = document.querySelector("#navRight");               //회전목마 오른쪽 네비
+			const indicatorList = document.querySelectorAll("#indicator > a");  //회전목마 인디게이터
+
+			let list = [1, 0, 0];
+			let timerID; // 타이머 핸들들
+			//함수 시간에따라서 이미지 화면 1, 인디게이터 1 선택이 되서 화면에 보여줘야한다. 
+			function listArray() {
+				for (let i = 0; i < list.length; i++) {
+					imgList[i].style.zIndex = list[i];
+				}
+				for (let i = 0; i < indicatorList.length; i++) {
+					// indicatorList[i].classList.remove('active');
+					indicatorList[i].firstChild.style.color = "wheat";
+				}
+				let index = list.indexOf(1);
+				// indicatorList[index].classList.add('active');
+				indicatorList[index].firstChild.style.color = "orange";
+			}
+			listArray();
+
+			//왼쪽네비게이터 클릭 왼쪽화면이동
+			navLeft.addEventListener("click", () => {
+				//list = [1,0,0,0]; 왼쪽에서 빼서 오른쪽 입력=> [0,0,0,1]
+				let value = list.shift();
+				list.push(value);
+				listArray();
+			});
+			navRight.addEventListener("click", () => {
+				//list = [1,0,0,0]; 오른쪽에서 빼서 왼쪽 입력=> [0,1,0,0]
+				list.unshift(list.pop());
+				listArray();
+			});
+			//3초마다 navgateright 기능을 불러준다
+			function startTimer() {
+				timerID = setInterval(() => {
+					list.unshift(list.pop());
+					listArray();
+				}, 2000);
+			}
+			startTimer();
+			//contain 영역에 마우스가 올라가면 타이머가 멈추게 한다.
+			content.addEventListener("mouseenter", () => {
+				console.log("마우스 들어감");
+				clearInterval(timerID);
+			});
+
+			//contain 영역에 마우스가 빠져나가면 타이머가 작동시킨다.
+			content.addEventListener("mouseleave", () => {
+				console.log("마우스 빠짐");
+				startTimer();
+			});
+
+
+			//indicator 클릭하면 해당되는 화면으로 이동한다.
+			for (let i = 0; i < indicatorList.length; i++) {
+				indicatorList[i].addEventListener("click", () => {
+					list = [0, 0, 0];
+					list[i] = 1;
+					listArray();
+				})
+			}
+		}); //end of DOMContentLoaded// 회전목마 스크립트
+	</script>
+	<script>
+
+		//스크립트ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+		// 엘리먼트 목록 ( 요소 패턴 변경 될 일이 없기에 상수로 작성 )
+		const id = document.querySelector("#id");
+		const idMessage = document.querySelector("#idMessage");
+		const pw = document.querySelector("#pw");
+		const pwMessage = document.querySelector("#pwMessage");
+		const pwCheck = document.querySelector("#pwCheck");
+		const pwCheckMessage = document.querySelector("#pwCheckMessage");
+		const name = document.querySelector("#name");
+		const nameMessage = document.querySelector("#nameMessage");
+
+		// 정규식 패턴
+		const idPattern = /^[\w]{3,12}$/;
+		const pwPattern = /^(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+~`\-={}[\]:;"'<>,.?/\\]).{6,}$/;
+		const namePattern = /^[가-힣]{2,4}$/
+
+		// 이벤트 목록 
+		id.addEventListener("blur", () => {
+			validate(id, idPattern, idMessage, "영문자 숫자, _만 입력가능, 최소 3자 이상 입력");
+		});
+
+		pw.addEventListener("blur", () => {
+			validate(pw, pwPattern, pwMessage, "영문(대소문자) + 숫자 + 특수문자가 각 1회 이상 입력 (6자리 이상)");
+			if (pwCheck.value != "") {
+				fn_pwCheck();
+			}
+		});
+
+
+
+
+
+		pwCheck.addEventListener("blur", () => {
+			if (pw.value != "") {
+				if (pw.value === pwCheck.value) {
+					pwCheckMessage.innerHTML = "비밀번호 일치";
+					pwCheckMessage.style.color = "green";
+					// pw.nextSibling.innerHTML = "";
+				} else {
+					// pw.nextSibling.innerHTML = "";
+					// pw.nextSibling.style.color = "tomato";
+					pwCheckMessage.innerHTML = "비밀번호가 일치하지 않습니다.";
+					pwCheckMessage.style.color = "tomato";
+					pw.value = "";
+					pwCheck.value = "";
+					pw.focus();
+				}
+			}
+		});
+
+		name.addEventListener("blur", () => {
+			validate(name, namePattern, nameMessage, "정확하게 입력해주세요.");
+		})
+
+
+		// 공동으로 사용되는 함수
+		function validate(inputObj, pattern, messageObj, message) {
+			if (inputObj.value != "") {
+				if (inputObj.value.match(pattern)) {
+					messageObj.innerHTML = "입력완료";
+					messageObj.style.color = "green";
+					return true;
+				} else {
+					messageObj.innerHTML = message;
+					messageObj.style.color = "tomato";
+					inputObj.value = "";
+					inputObj.focus();
+					return false;
+				}
+			}
+		}
+
+		function fn_pwCheck() {
+			if (pw.value === pwCheck.value) {
+				pwCheck.nextSibling.innerHTML = "비밀번호 일치";
+				pwCheck.nextSibling.style.color = "green";
+				pw.nextSibling.innerHTML = "";
+			} else {
+				pw.nextSibling.innerHTML = "";
+				pw.nextSibling.style.color = "tomato";
+				pwCheck.nextSibling.innerHTML = "비밀번호가 일치하지 않습니다.";
+				pwCheck.nextSibling.style.color = "tomato";
+				pw.value = "";
+				pwCheck.value = "";
+				pw.focus();
+			}
+		}
+
+
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		let birthDayTD = document.querySelector("#birthDay");
+		let scYear = document.createElement('select');
+		scYear.id = "year";
+		let scMonth = document.createElement('select');
+		scMonth.id = "month";
+		let scDay = document.createElement('select');
+		scDay.id = "day"
+
+		birthDayTD.appendChild(scYear);
+		birthDayTD.appendChild(scMonth);
+		birthDayTD.appendChild(scDay);
+
+		let year = document.querySelector("#year");
+		let month = document.querySelector("#month");
+		let day = document.querySelector("#day");
+
+		let toYear = new Date().getFullYear();
+
+		// 년, 월, 일 드롭다운
+		for (toYear; toYear >= 1940; toYear--) {
+			const option = document.createElement('option');
+			option.innerText = toYear + "년";
+			year.appendChild(option);
+		}
+
+		for (let i = 1; i <= 12; i++) {
+			const option = document.createElement('option');
+			option.innerText = i + "월";
+			month.appendChild(option);
+		}
+
+		for (let i = 1; i <= 31; i++) {
+			const option = document.createElement('option');
+			option.innerText = i + "일";
+			day.appendChild(option);
+		}
+
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	</script>
+</body>
+
+</html>
